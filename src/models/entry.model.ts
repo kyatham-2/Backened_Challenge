@@ -1,6 +1,7 @@
 export interface Entry {
-  id: string;
+  id: number;
+  reportId: number;
   message: string;
   priority: "low" | "medium" | "high";
-  createdAt: number;
+  createdAt: Date;
 }

@@ -38,19 +38,23 @@ class ReportStore {
   }
 
   addAttachment(id: number, file: any) {
-    const report = this.get(id);
-    if (!report) return null;
+  const report = this.get(id);
+  if (!report) return null;
 
-    const entry = { filename: file.filename, original: file.originalname };
+  const entry = {
+    filename: file.filename,
+    original: file.originalname,
+  };
 
-    if (!this.attachments.has(id)) {
-      this.attachments.set(id, []);
-    }
-
-    this.attachments.get(id)!.push(entry);
-
-    return { reportId: id, file: entry };
+  if (!this.attachments.has(id)) {
+    this.attachments.set(id, []);
   }
+
+  this.attachments.get(id)!.push(entry);
+
+  return { reportId: id, file: entry };
+}
+
 }
 
 export const reportStore = new ReportStore();
